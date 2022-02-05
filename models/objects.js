@@ -7,7 +7,7 @@ const objectSchema = mongoose.Schema({
     found_location: String,
     desc: String,
     date: String,
-    place: String,
+    contact: String,
 })
 
 module.exports = mongoose.model('objects', objectSchema)

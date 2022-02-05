@@ -6,7 +6,7 @@ const options = {
     useNewUrlParser: true,
 }
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_KEY}@cluster0.xndhz.mongodb.net/objects?retryWrites=true&w=majority`,
+mongoose.connect(`mongodb+srv://${process.env.MONGO_KEY}@cluster0.xndhz.mongodb.net/foundobjects?retryWrites=true&w=majority`,
     options,
     function (err) {
         if (err) {
