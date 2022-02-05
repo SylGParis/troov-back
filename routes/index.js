@@ -37,12 +37,13 @@ router.post('/add-object', async function (req, res, next) {
   res.json({ result });
 });
 
-router.delete('/delete-object', async function (req, res, next) {
-  console.log('name',req.body.name, req.body.date )
-  // supprime un element de la collection dans la base de donnée
-  let {result} = await ObjectModel.deleteOne({ _id: req.body._id })
+router.delete('/delete-object/:_id', async function (req, res, next) {
   
-  if (result.deletedCount === 1) {
+  let result=false
+  // supprime un element de la collection dans la base de donnée
+  let {deletedCount} = await ObjectModel.deleteOne({ _id: req.params._id })
+  
+  if (deletedCount === 1) {
     result = true;
   } else {
     result = false;
