@@ -16,13 +16,13 @@ router.get('/get-objects-list', async function (req, res, next) {
 
 router.post('/add-object', async function (req, res, next) {
   // ajoute un objet dans la collection objects dans la base de donnée
+  console.log('in back', req.body.name)
   let result =false;
   let objectSaved = null;
   if (req.body.name) {
     let newObject = new ObjectModel ({
       name: req.body.name,
       type: req.body.type,
-      color: req.body.color,
       found_location: req.body.found_location,
       desc: req.body.desc,
       date: req.body.date,
@@ -31,7 +31,8 @@ router.post('/add-object', async function (req, res, next) {
 
     objectSaved = await newObject.save();
   }
-  if (objectSaved ) {
+  // on valide la mise en BDD pour le front
+  if (objectSaved) {
     result = true;
   };
   res.json({ result });
